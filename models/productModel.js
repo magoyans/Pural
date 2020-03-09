@@ -25,7 +25,7 @@ async function getProduct(id){
 //Product by category
 async function getProductsByCategory(id){
     try{
-        let query = "select * from product where id_category = ? ";
+        let query = "SELECT * FROM `product_has_category_has_type` join product on product_has_category_has_type.id_product = id_prod join type on product_has_category_has_type.id_type = type.id_type join category on category.id_cat = product_has_category_has_type.id_category where product_has_category_has_type.id_category = ?";
         let rows = await pool.query(query,id);
         return rows;
     }catch(error){
@@ -33,4 +33,14 @@ async function getProductsByCategory(id){
     }
 }
 
-module.exports = {getProducts, getProduct, getProductsByCategory} 
+async function getCategoryById(id) {
+    try {   
+        let query = "select name_cat from category where id_cat = ?";
+        const rows = await pool.query(query,id);
+        return rows;
+    } catch(error) {
+        throw error;
+    }
+}
+
+module.exports = {getCategoryById,getProducts, getProduct, getProductsByCategory} 

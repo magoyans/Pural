@@ -2,9 +2,11 @@ addEventListener('load', f1);
 
 
 function f1(){
+    document.getElementById('register').disabled = true;
+
     document.getElementById('name').addEventListener('blur', f2);
     document.getElementById('lastName').addEventListener('blur', f3);
-    document.getElementById('register').addEventListener('click', f4);
+    document.getElementById('email').addEventListener('blur', f4);
     document.getElementById('pw2').addEventListener('keyup', comprobar);
 }
 
@@ -25,7 +27,10 @@ function f4() {
     let verificacioncaracteres = email.split("@");
     if (verificacioncaracteres[0].length > 5){
         //enviar info al servidor
+        document.getElementById('register').disabled = false;
+
     }else{
+        document.getElementById('register').disabled = true;
         //no enviar
     }
 }

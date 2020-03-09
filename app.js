@@ -51,7 +51,7 @@ app.use('/register', registerRouter);
 app.use('/contact', contactRouter);
 app.use('/category', categoryRouter);
 app.use('/product', productRouter);
-app.use('/admin', adminRouter);
+app.use('/admin', guardianAdmin,adminRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

@@ -4,7 +4,7 @@
 <!-- Category showcase -->
     <section class="category-showcase">
         <div class="content">
-            <h2>Category</h2>
+            <h2>{{categoria}}</h2>
         </div>
     </section>
 
@@ -12,24 +12,20 @@
     
     {{!-- Como hacer que dinamicamente esto muestre el type antes de los 4 productos? --}}
 
-    {{#each products_category}}
 
-    <h2 class="type">{{id_type}}</h2>
-
-    {{/each}}
 
     
     <section class="product-cards">
+        {{#each products_category}}
+            <div>
+                <img src="/images/{{img}}" alt="">
+                <p class="product-category">{{name_cat}}</p>
+                <h3>{{name}}</h3>
+                <p>{{description}}</p>
+                <p class="pricing"><strong>${{price}}</strong>/{{weight}}</p>
+                <a href="/product/{{id_prod}}" class="btn block">Show more<i class="fas fa-chevron-right"></i></a>
+            </div>
+        {{/each}}
 
-    {{#each products_category}}
-        <div>
-            <img src="/images/{{img}}" alt="">
-            <p class="product-category">{{id_category}}</p>
-            <h3>{{name}}</h3>
-            <p>{{description}}</p>
-            <p class="pricing"><strong>${{price}}</strong>/{{weight}}</p>
-            <a href="/product/{{id_prod}}" class="btn block">Show more<i class="fas fa-chevron-right"></i></a>
-        </div>
-    {{/each}}
 
     </section>   

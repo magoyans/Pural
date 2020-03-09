@@ -7,7 +7,7 @@ router.get('/', async (req, res, next)=>{
     try{
         console.log("entro a admin")
         let data = await adminModel.getProductsAdmin();
-        res.render('admin', {products_array: data}, { title: 'Admin' });        
+        res.render('admin', {products_array: data, title: 'Admin' });        
     }catch(error){
         res.render('errorpage');
         console.log(error);
