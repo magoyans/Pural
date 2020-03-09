@@ -1,0 +1,21 @@
+
+<div class="container">
+    <div class="single-product">
+        {{#each product_array}}
+        <div class="product-image">
+            <img src="/images/{{img}}" alt="">
+        </div>
+
+        <div class="product-info">
+            <p class="product-category"> {{id_category}} <i class="fas fa-chevron-right"></i> {{id_type}} </p>
+            <h1>{{name}}</h1>
+            <p>{{description}}</p>
+            <p class="pricing"><strong>${{price}}</strong>/{{weight}}</p>
+            <a href="#" class="btn">Add to cart
+                <i class="fas fa-chevron-right"></i>
+            </a>
+        </div> 
+        {{/each}}  
+    </div>
+
+</div> <!-- Main container ends -->

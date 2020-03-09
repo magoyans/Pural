@@ -1,0 +1,38 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<link rel='stylesheet' href='/stylesheets/pural-style.css'/>
+
+
+<div class="container-fluid form-style">
+	<div class="row" style="height:100vh;">
+		<div class="col-12 d-flex justify-content-center align-items-center">
+			<form method="POST" action="/login" style="width:40%;">
+				<div class="form-group">
+
+				<div class="container text-center mb-4">
+					<h1>Welcome back!</h1>
+				</div>
+				<div class="form-group">
+					<input type="email" class="form-control" id="email" autofocus placeholder="Email*" name="email">
+				</div>
+
+				<div class="form-group">
+					<input type="password" class="form-control" placeholder="Password*" name="password">
+					<a href="#" class="form-text text-dark">I forgot my password</a>
+				</div>
+
+				<div class="form-check text-dark mb-4">
+					<input class="form-check-input" type="checkbox" id="autoSizingCheck2">
+					<label class="form-check-label" for="autoSizingCheck2">Remember me</label>
+				</div>
+
+				<div class="form-group">
+					<button type="submit" class="btn btn-success btn-block">SIGN IN</button>
+				</div>
+				
+				<p class="text-center text-danger">{{message}}</p>
+			</form>
+		</div>
+	</div>
+</div>
