@@ -1,16 +1,47 @@
 var express = require('express');
 var router = express.Router();
 const adminModel = require('./../models/adminModel');
+const productModel = require('./../models/productModel');
 
 //Renderizar vista admin 
 router.get('/', async (req, res, next)=>{
     try{
-        console.log("entro a admin")
         let data = await adminModel.getProductsAdmin();
-        res.render('admin', {products_array: data, title: 'Admin' });        
+        res.render('admin', {products_array: data, title: 'Administrator' });        
     }catch(error){
         res.render('errorpage');
         console.log(error);
+    }
+})
+
+//Mostrar vista para editar
+router.get('/edit/:id', async (req,res,next)=>{
+    try{
+        let id = req.params.id;
+        let product = await productModel.getProduct(id);
+        res.render('edit', {product_array: product, title: 'Edit product' });
+    }catch(error){
+        console.log(error);
+        res.render('errorpage')
+    }
+})
+
+//Editar un producto
+router.post('/edit', async(req,res,next)=> {
+    try {
+        let objProd = {
+            name : req.body.name,
+            description : req.body.description,
+            price: req.body.price,
+            weight: req.body.weight,
+        }
+        let id_prod = req.body.id_prod;
+        let respuesta = await adminModel.updateProd(objProd,id_prod);
+        console.log(respuesta);
+        res.redirect('/admin');
+    } catch(error) {
+        console.log(error);
+        res.render('errorpage');
     }
 })
 

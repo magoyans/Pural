@@ -4,22 +4,20 @@
 <!-- Category showcase -->
     <section class="category-showcase">
         <div class="content">
-            <h2>{{categoria}}</h2>
+            <h2>All Products</h2>
         </div>
     </section>
 
 <!-- Products Cards -->
     <section class="product-cards">
-        {{#each products_category}}
+        {{#each all_products}}
             <div>
                 <img src="/images/{{img}}" alt="">
-                <p class="product-category">{{name_cat}} > {{name_type}}</p>
+                <p class="product-category">{{id_cat}} > {{id_type}}</p>
                 <h3>{{name}}</h3>
                 <p>{{description}}</p>
                 <p class="pricing"><strong>${{price}}</strong>/{{weight}}</p>
                 <a href="/product/{{id_prod}}" class="btn block">Show more<i class="fas fa-chevron-right"></i></a>
             </div>
         {{/each}}
-
-
-    </section>   
+    </section>  

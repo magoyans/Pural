@@ -14,7 +14,7 @@ async function addProduct(objeto){
 //Eliminar productos por ID 
 async function deleteProducts(id){
     try{
-        let query = "delete from products where id_prod = ?"
+        let query = "delete from product where id_prod = ?"
         let rows = await pool.query(query, id);
         return rows;
     }catch(error){
@@ -33,6 +33,17 @@ async function getProductsAdmin(){
     }
 }
 
+//Updatear cambios de un producto
+async function updateProd(obj,id){
+    try{
+        let query = "update product set ? where id_prod = ?";
+        let rows = await pool.query(query, [obj,id]);
+        return rows;
+    }catch(error){
+        throw error
+    }
+}
 
 
-module.exports = {getProductsAdmin, addProduct, deleteProducts}
+
+module.exports = {getProductsAdmin, addProduct, deleteProducts, updateProd}

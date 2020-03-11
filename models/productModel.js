@@ -1,21 +1,11 @@
 const pool = require('../bd'); 
 
-//All products
-async function getProducts(){
-    try{ 
-        let query = "select * from product"
-        const rows = await pool.query(query); 
-        return rows;
-    }catch (error){
-        throw error;
-    }
-}
-
 //Product by id
 async function getProduct(id){
     try{
-        let query = "select * from product where id_prod=" + id;
-        let rows = await pool.query(query);
+        let query = "select * from product where id_prod=?";
+        let rows = await pool.query(query, id);
+        console.log(rows);
         return rows;
     }catch(error){
         throw error;
@@ -33,6 +23,7 @@ async function getProductsByCategory(id){
     }
 }
 
+//Category
 async function getCategoryById(id) {
     try {   
         let query = "select name_cat from category where id_cat = ?";
@@ -43,4 +34,4 @@ async function getCategoryById(id) {
     }
 }
 
-module.exports = {getCategoryById,getProducts, getProduct, getProductsByCategory} 
+module.exports = {getCategoryById, getProduct, getProductsByCategory} 

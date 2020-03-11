@@ -1,0 +1,55 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+
+<link rel='stylesheet' href='/stylesheets/pural-style.css'/>
+
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h2 class="text-center">Edit product information</h2>
+            
+            <form action="/admin/edit" method="post">
+
+            {{#each product_array}}
+            <input type="hidden" value="{{id_prod}}" name="id_prod">
+
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" autofocus name="name" class="form-control" id="name" value="{{name}}">
+            </div>
+
+            <div class="form-group">
+                <label for="texto">Description</label>
+                <textarea class="form-control" name="description" id="description">{{description}}</textarea> 
+            </div>
+
+            <div class="form-row">
+                <div class="col-md-6">
+                    <label for="price">Price</label>
+                    <div class="input-group">
+                        <div class="input-group-prepend">
+                            <div class="input-group-text">$</div>
+                        </div>
+                        <input type="text" name="price" class="form-control" id="price" value="{{price}}">
+                    </div>
+                </div>
+
+                <div class="col-md-6">
+                    <label for="texto">Weight</label>
+                    <input type="text" name="weight" class="form-control" id="weight" value="{{weight}}">
+                </div>
+            </div>
+
+            {{!-- mostrar imagen --}}
+            {{!-- <div class="form-group">
+                <label for="imagen">Inserte su imagen</label>
+                <input type="file" class="form-control-file" name="imagen">
+            </div> --}}
+
+            {{/each}}
+                <button type="submit" class="btn btn-primary btn-block mt-4">Save changes</button>
+            </form>
+        </div>
+    </div>
+</div> 

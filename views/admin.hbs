@@ -20,6 +20,8 @@
                         <td>Price</td>
                         <td>Weight</td>
                         <td>Description</td>
+                        <td>Edit</td>
+                        <td>Delete</td>
                     </tr>
                 </thead>
                 <tbody>
@@ -32,6 +34,16 @@
                         <td>${{price}}</td>
                         <td>{{weight}}</td>
                         <td>{{description}}</td>
+                        <td> 
+                            <a href="/admin/edit/{{id_prod}}">
+                            <i class="fas fa-pencil-alt text-primary"></i>
+                            </a>                       
+                        </td>
+                        <td>
+                            <a href="/admin/delete/{{id_prod}}">
+                            <i class="fas fa-times text-danger" style="cursor: pointer;"></i>
+                            </a>    
+                        </td>
                     </tr>
                     {{/each}}
                 </tbody>
