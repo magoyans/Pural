@@ -1,0 +1,101 @@
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+
+<link rel='stylesheet' href='/stylesheets/pural-style.css'/>    
+
+<nav class="main-nav">
+    <a href="/"><img src="/images/logo.small.PNG" alt="Logo" class="logo"></a>
+    <ul class="main-menu">
+        <li><a href="/product/all" target="_blank">All Products</a></li>
+        <li><a href="/category/1" target="_blank">Bath & Shower</a></li>
+        <li><a href="/category/2" target="_blank">Hair</a></li>
+        <li><a href="/category/3" target="_blank">Face</a></li>
+        <li><a href="/category/4" target="_blank">Body</a></li>
+    </ul>
+
+    <ul class="right-menu">
+        <li>
+        {{#if session}}
+        <a href="/logout" target="_blank">Logout</a>
+        {{else}}
+        <a href="/login" target="_blank">Login</a>
+        {{/if}}
+        </li>
+        <span>|</span>
+        <li><a href="/register" target="_blank">Join</a></li>
+        <span>|</span>
+        <li><a href="/contact" target="_blank">Contact Us</a></li>
+        <li><a href="#"><i class="fas fa-search"></i></a></li>
+        <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
+    </ul>
+</nav>
+
+<div class="container mt-5">
+    <div class="row justify-content-center">
+        <div class="col-8">
+            <h3 class="text-center">Add new product</h3>
+            
+            <form action="/admin/new" method="post" enctype="multipart/form-data"> 
+                <div class="form-group">
+                    <label for="titulo">Name</label>
+                    <input type="text" autofocus name="name" class="form-control" id="name">
+                </div>
+
+                <div class="form-group">
+                    <label for="texto">Description</label>
+                    <textarea class="form-control" name="description" id="description"></textarea>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Category</label>
+                    <select class="form-control" name="category" id="category">
+                        <option selected disabled>Select category</option>
+                    {{#each array_category}}
+                        <option value="{{id_cat}}">{{name_cat}}</option>
+                    {{/each}}
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="category">Type</label>
+                    <select class="form-control" name="type" id="type">
+                        <option selected disabled>Select type</option>
+                    {{#each array_type}}
+                        <option value="{{id_type}}">{{name_type}}</option>
+                    {{/each}}
+                    </select>
+                </div>
+
+                <div class="form-row">
+                    <div class="col-md-6">
+                        <label for="price">Price</label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">$</div>
+                            </div>
+                            <input type="text" name="price" class="form-control" id="price" value="{{price}}">
+                        </div>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label for="texto">Weight</label>
+                        <input type="text" name="weight" class="form-control" id="weight" value="{{weight}}">
+                    </div>
+                </div>
+
+                <div class="form-group mt-2">
+                    <label for="img">Image</label>
+                    <input type="file" class="form-control-file" name="img" id="img">
+                </div>
+
+                <button type="submit" class="btn btn-primary btn-block">Save</button>
+
+                {{#if status}}
+                <h5 class="text-center text-success mt-3">{{message}}</h5>
+                {{else}}
+                <h5 class="text-center text-danger mt-3">{{message}}</h5>
+                {{/if}}
+                
+            </form>
+        </div>
+    </div>
+</div> 

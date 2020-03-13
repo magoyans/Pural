@@ -3,7 +3,7 @@ const pool = require('../bd');
 //Product by id
 async function getProduct(id){
     try{
-        let query = "select * from product where id_prod=?";
+        let query = "select * from product_has_category_has_type join category on id_category = id_cat join type on product_has_category_has_type.id_type = type.id_type join product on product_has_category_has_type.id_product = product.id_prod where id_prod=?";
         let rows = await pool.query(query, id);
         console.log(rows);
         return rows;
@@ -15,7 +15,7 @@ async function getProduct(id){
 //Product by category
 async function getProductsByCategory(id){
     try{
-        let query = "SELECT * FROM `product_has_category_has_type` join product on product_has_category_has_type.id_product = id_prod join type on product_has_category_has_type.id_type = type.id_type join category on category.id_cat = product_has_category_has_type.id_category where product_has_category_has_type.id_category = ?";
+        let query = "select * from product_has_category_has_type join product on product_has_category_has_type.id_product = id_prod join type on product_has_category_has_type.id_type = type.id_type join category on category.id_cat = product_has_category_has_type.id_category where product_has_category_has_type.id_category = ?";
         let rows = await pool.query(query,id);
         return rows;
     }catch(error){

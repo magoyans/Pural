@@ -2,6 +2,10 @@ var express = require('express');
 var router = express.Router();
 const adminModel = require('./../models/adminModel');
 const productModel = require('./../models/productModel');
+const multer = require('multer');
+const uuid = require('node-uuid');
+const fs = require('fs');
+const upload = multer({dest : './uploads'});
 
 //Renderizar vista admin 
 router.get('/', async (req, res, next)=>{
@@ -57,26 +61,59 @@ router.get('/delete/:id', async(req, res, next)=>{
     }
 })
 
-//Agregar nuevo producto
-router.post('/new', async (req, res, next)=>{
+//Renderizar la vista new 
+router.get('/new', async (req,res,next)=> {
     try{
+        let category = await adminModel.getCategory();
+        let type = await adminModel.getType();
+        res.render('new', {array_category: category, array_type: type, title: 'New product'});
+    }catch(error){
+        res.render('errorpage');
+        console.log(error);
+    }
+})
+
+//Agregar nuevo producto
+router.post('/new', upload.array('img',1), async (req, res, next)=>{
+    try{
+        var name_imagen = '';
+        if(req.files[0].mimetype == 'image/jpeg' || req.files[0].mimetype == 'image/png'){
+            if(req.files[0].size <= 10000000){ 
+                let array_mime = req.files[0].mimetype.split('/');
+                let ext = array_mime[1];
+                let nombre_aleatorio = uuid();
+                let name_imagen = nombre_aleatorio + '.' + ext;
+                let temporal_name = req.files[0].filename;
+    
+                fs.createReadStream('./uploads/'+temporal_name).pipe(fs.createWriteStream('./public/images/'+name_imagen))
+    
+    
+                fs.unlink('./uploads/'+temporal_name, (err)=>{
+                    if(err){
+                        console.log(err);
+                    } else {
+                        console.log("temporal borrado")
+                    }
+                })            
+    
+            }else{
+                console.log("Selecciona una imagen más chica")
+            }
+        } else {
+            console.log("Formato incorrecto")
+        }
+
         let objProd = {
             name: req.body.name,
             description : req.body.description,
             price: req.body.price,
             weight: req.body.weight,
-            type: req.body.type,
+            id_type: req.body.type,
             id_category: req.body.category,
-            img: req.body.img,
+            img: name_imagen
         }
-    let product = await adminModel.addProduct(objProd)
-    
-    if(resultado){
-        res.render('new', {status : true,message : 'Saved'});
-    } else {
-        res.render('new', {status : false,message : 'Error'}); 
-    }
-
+    let product = await adminModel.addProduct(objProd);
+    res.redirect('/admin');
     }catch(error){
         res.render('errorpage');
         console.log(error);

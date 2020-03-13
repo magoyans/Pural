@@ -4,6 +4,12 @@ const productModel = require('./../models/productModel');
 const adminModel = require('../models/adminModel');
 
 /* All products */
+router.get('/all', async(req, res,next)=>{
+    console.log("all products")
+    let data =await  adminModel.getProductsAdmin();
+    console.log(data);
+    res.render('all', {all_products: data, title: 'All Products'})
+})
 router.get('/', function(req, res, next) {
     res.render('product', { title: 'All products' });
 });
@@ -16,10 +22,5 @@ router.get ('/:id', async (req, res, next)=>{
 })
 
 /*All products*/
-router.get('/all', async(req, res,next)=>{
-    let data = adminModel.getProductsAdmin();
-    console.log(data);
-    res.render('all', {all_products: data, title: 'All Products'})
-})
 
 module.exports = router; 
