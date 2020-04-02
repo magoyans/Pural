@@ -1,11 +1,14 @@
 const pool = require('../bd'); 
 
 //Agregar nuevos productos
-async function addProduct(objeto){
+async function addProduct(obj1,obj2){
     try{
-        let query = "insert into product set ?";
-        let rows = await pool.query(query, [objeto]);
-        return rows;
+        let query1 = "insert into product set ?";
+        const rows1 = await pool.query(query1, [obj1]);
+        obj2.id_product = rows1.insertId
+        let query2 = "insert into product_has_category_has_type set ?"
+        const rows2 = await pool.query(query2,obj2)
+        return rows2;
     }catch(error){
         throw error;
     }
@@ -25,7 +28,7 @@ async function deleteProducts(id){
 //Mostrar todos los productos
 async function getProductsAdmin(){
     try{
-        let query = "select * from product_has_category_has_type join category on id_category = id_cat join type on product_has_category_has_type.id_type = type.id_type join product on product_has_category_has_type.id_product = product.id_prod order by id_prod desc";
+        let query = "select * from product_has_category_has_type join category on product_has_category_has_type.id_category = category.id_cat join type on product_has_category_has_type.id_type = type.id_type join product on product_has_category_has_type.id_product = product.id_prod order by id_prod desc";
         let rows = await pool.query(query);
         return rows;
     }catch(error){

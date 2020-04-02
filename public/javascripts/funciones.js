@@ -8,7 +8,7 @@ function f1(){
     document.getElementById('lastName').addEventListener('blur', f3);
     document.getElementById('email').addEventListener('blur', f4);
     document.getElementById('pw2').addEventListener('keyup', comprobar);
-    document.getElementById('delete').addEventListener('click', Swal.fire);
+    // document.getElementById('delete').addEventListener('click', Swal.fire);
 }
 
 function f2(){
@@ -27,12 +27,10 @@ function f4() {
     let email = document.getElementById('email').value.trim();
     let verificacioncaracteres = email.split("@");
     if (verificacioncaracteres[0].length > 5){
-        //enviar info al servidor
         document.getElementById('register').disabled = false;
 
     }else{
         document.getElementById('register').disabled = true;
-        //no enviar
     }
 }
 
@@ -62,21 +60,21 @@ function comprobar(){
 
 }
 
- function Swal.fire({
-     title: 'Are you sure?',
-     text: "You won't be able to revert this!",
-     icon: 'warning',
-     showCancelButton: true,
-     confirmButtonColor: '#3085d6',
-     cancelButtonColor: '#d33',
-     confirmButtonText: 'Yes, delete it!'
-   }).then((result) => {
-     if (result.value) {
-       Swal.fire(
-         'Deleted!',
-         'Your file has been deleted.',
-         'success'
-       )
-     }
-   })
+//  function Swal.fire({
+//      title: 'Are you sure?',
+//      text: "You won't be able to revert this!",
+//      icon: 'warning',
+//      showCancelButton: true,
+//      confirmButtonColor: '#3085d6',
+//      cancelButtonColor: '#d33',
+//      confirmButtonText: 'Yes, delete it!'
+//    }).then((result) => {
+//      if (result.value) {
+//        Swal.fire(
+//          'Deleted!',
+//          'Your file has been deleted.',
+//          'success'
+//        )
+//      }
+//    })
 

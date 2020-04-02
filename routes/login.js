@@ -3,11 +3,16 @@ var router = express.Router();
 const usersModels = require('./../models/usersModel');
 const md5 = require ('md5');
 
+
 //GET LOGIN PAGE
 router.get('/', function(req, res, next) {
-  res.render('login', { title: 'Login' });
+  if(req.session.usuario || req.session.admin) {
+    status_session = true
+  } else {
+    status_session = false
+  }
+  res.render('login', { title: 'Login', session : status_session});
 });
-
 
 //POST
 router.post('/',  async(req,res,next) =>{

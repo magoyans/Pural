@@ -4,7 +4,13 @@ const correoModel = require('../models/correoModel');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('contact', { title: 'Contact Us' });
+  let status_session;
+  if(req.session.usuario || req.session.admin) {
+      status_session = true
+  } else {
+      status_session = false
+  }
+  res.render('contact', { title: 'Contact Us', session : status_session});
 });
 
 //POST (recibe datos y envia correo)

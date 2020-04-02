@@ -13,6 +13,7 @@ const contactRouter = require ('./routes/contact');
 const categoryRouter = require ('./routes/category');
 const productRouter = require ('./routes/product');
 const adminRouter = require ('./routes/admin');
+const logoutRouter = require ('./routes/logout')
 
 var app = express();
 
@@ -52,6 +53,7 @@ app.use('/contact', contactRouter);
 app.use('/category', categoryRouter);
 app.use('/product', productRouter);
 app.use('/admin', guardianAdmin,adminRouter);
+app.use('/logout', logoutRouter);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

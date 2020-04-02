@@ -23,7 +23,7 @@ async function getProductsByCategory(id){
     }
 }
 
-//Category
+//Category by id
 async function getCategoryById(id) {
     try {   
         let query = "select name_cat from category where id_cat = ?";
@@ -34,4 +34,15 @@ async function getCategoryById(id) {
     }
 }
 
-module.exports = {getCategoryById, getProduct, getProductsByCategory} 
+//Category
+async function indexCategory(){
+    try{
+        let query = "select * from category";
+        const rows = await pool.query(query);
+        return rows;
+    }catch(error){
+        throw error;
+    }
+}
+
+module.exports = {getCategoryById, getProduct, getProductsByCategory, indexCategory} 

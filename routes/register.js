@@ -5,7 +5,12 @@ const md5 = require('md5');
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-  res.render('register', { title: 'Join' });
+  if(req.session.usuario || req.session.admin) {
+    status_session = true
+  } else {
+    status_session = false
+  }
+  res.render('register', { title: 'Join', session : status_session}); 
 });
 
 
