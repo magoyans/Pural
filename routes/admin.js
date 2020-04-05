@@ -122,7 +122,7 @@ router.post('/new', upload.array('img',1), async (req, res, next)=>{
             console.log("Formato incorrecto")
         }
 
-        let objProd = {
+        let obj1 = {
             name: req.body.name,
             description : req.body.description,
             price: req.body.price,
@@ -131,7 +131,11 @@ router.post('/new', upload.array('img',1), async (req, res, next)=>{
             id_category: req.body.category,
             img: name_imagen
         }
-    let product = await adminModel.addProduct(objProd);
+        let obj2 = {
+            id_type: req.body.type,
+            id_category: req.body.category
+        }
+    let product = await adminModel.addProduct(obj1, obj2);
     res.redirect('/admin');
     }catch(error){
         res.render('errorpage');

@@ -64,10 +64,12 @@ ul{
 
 .main-nav ul li a{
     padding-bottom: 2px;
+    color: var(--darktext);
 }
 
 .main-nav ul li a:hover {
-    opacity: 0.5;
+    opacity: 0.5 !important;
+    text-decoration: none !important;
 }
 
 .main-nav ul.main-menu{
@@ -99,7 +101,7 @@ ul{
 }
 
 .btn:hover{
-    opacity: 0.9;
+    opacity: 0.9 !important;
 }
 
 .dark{
@@ -419,7 +421,7 @@ ul{
     }
 
     .menu-btn:hover{
-        opacity: 0.5;
+        opacity: 0.5 !important;
     }
 
     .main-nav ul.main-menu{

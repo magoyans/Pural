@@ -5,10 +5,9 @@ async function addProduct(obj1,obj2){
     try{
         let query1 = "insert into product set ?";
         const rows1 = await pool.query(query1, [obj1]);
-        obj2.id_product = rows1.insertId
-        let query2 = "insert into product_has_category_has_type set ?"
-        const rows2 = await pool.query(query2,obj2)
-        return rows2;
+        let query2 = "insert into product_has_category_has_type (id_product, id_category, id_type) values (last_insert_id(), id_category, id_type)"
+        const rows2 = await pool.query(query2,[obj2])
+        return rows1, rows2;
     }catch(error){
         throw error;
     }
