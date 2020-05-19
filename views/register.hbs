@@ -3,93 +3,63 @@
 	
 <link rel='stylesheet' href='/stylesheets/pural-style.css'/>
 
-<div class="container">
-    <nav class="main-nav">
-        <a href="/"><img src="/images/logo.small.PNG" alt="Logo" class="logo"></a>
-        <ul class="main-menu">
-            <li><a href="/product/all" target="_blank">All Products</a></li>
-            <li><a href="/category/1" target="_blank">Bath & Shower</a></li>
-            <li><a href="/category/2" target="_blank">Hair</a></li>
-            <li><a href="/category/3" target="_blank">Face</a></li>
-            <li><a href="/category/4" target="_blank">Body</a></li>
-        </ul>
+<div class="container-fluid form-style">
+    <div class="row" style="height:100vh;">
+        <div class="col-12 d-flex justify-content-center align-items-center">
+            
+            <form method="POST" action="/register" style="width:40%;">
+            <div class="form-group justify-content-center align-items-center">
 
-        <ul class="right-menu">
-            <li>
-            {{#if session}}
-            <a href="/logout" target="_blank">Logout</a>
-            {{else}}
-            <a href="/login" target="_blank">Login</a>
-            {{/if}}
-            </li>
-            <span>|</span>
-            <li><a href="/register" target="_blank">Join</a></li>
-            <span>|</span>
-            <li><a href="/contact" target="_blank">Contact Us</a></li>
-            <li><a href="#"><i class="fas fa-search"></i></a></li>
-            <li><a href="#"><i class="fas fa-shopping-cart"></i></a></li>
-        </ul>
-    </nav>
-
-    <div class="container-fluid form-style">
-        <div class="row" style="height:100vh;">
-            <div class="col-12 d-flex justify-content-center align-items-center">
-                
-                <form method="POST" action="/register" style="width:40%;">
-                <div class="form-group">
-
-                <div class="container text-center mb-4">
-                    <h1>Join Us</h1>
-                </div>
-
-                <div class="form-group">
-                    <input type="email" class="form-control" id="email" autofocus placeholder="Email*" required name="email">
-                </div>
-
-                <div class="form-group">
-                    <input type="text" class="form-control" id="name" placeholder="First Name*" required name="name">
-                </div>
-
-                <div class="form-group">
-                    <input type="text" class="form-control" id="lastName" placeholder="Last Name*" name="lastName">
-                </div>
-
-                <div class="form-group">
-                    <input type="phone" class="form-control" id="phone" placeholder="Phone" name="phone">
-                </div>
-
-                <div class="form-group">
-                    <input type="password" class="form-control" id="pw1" placeholder="Password*" name="password">
-                </div>
-
-                <div class="form-group">
-                    <input type="password" class="form-control" id="pw2" placeholder="Repeat password*">
-                    <small id="passwordHelpBlock" class="form-text text-dark">
-                        Passwords must match
-                    </small>
-                    <small id="passwordCount" class="form-text text-dark verif">8-10 characters, containing letters & numbers.</small>
-                </div>
-
-
-                <div class="form-check text-dark mb-4">
-                    <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
-                    <label class="form-check-label" for="autoSizingCheck2">
-                        Yes, I want to receive Pural's newsletter
-                    </label>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" id="register" class="btn btn-success btn-block">CREATE ACCOUNT</button>
-                </div>
-
-                {{#if status}}
-                    <h5 class="text-center text-success mt-3">{{message}}</h5> 
-                {{else}}
-                    <h5 class="text-center text-danger mt-3">{{message}}</h5>
-                {{/if}}
-
-                </form>
+            <div class="form-header container text-center mb-4">
+                <h1>Join Us</h1>
             </div>
+
+            <div class="form-group">
+                <input type="email" class="form-control" id="email" autofocus placeholder="Email*" required name="email">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="name" placeholder="First Name*" required name="name">
+            </div>
+
+            <div class="form-group">
+                <input type="text" class="form-control" id="lastName" placeholder="Last Name*" name="lastName">
+            </div>
+
+            <div class="form-group">
+                <input type="phone" class="form-control" id="phone" placeholder="Phone" name="phone">
+            </div>
+
+            <div class="form-group">
+                <input type="password" class="form-control" id="pw1" placeholder="Password*" name="password">
+            </div>
+
+            <div class="form-group">
+                <input type="password" class="form-control" id="pw2" placeholder="Repeat password*">
+                <small id="passwordHelpBlock" class="form-text text-dark">
+                    Passwords must match
+                </small>
+                <small id="passwordCount" class="form-text text-dark verif">8-10 characters, containing letters & numbers.</small>
+            </div>
+
+            <div class="form-check text-dark mb-4">
+                <input class="form-check-input" type="checkbox" id="autoSizingCheck2">
+                <label class="form-check-label" for="autoSizingCheck2">
+                    Yes, I want to receive Pural's newsletter
+                </label>
+            </div>
+
+            <div class="form-group">
+                <button type="submit" id="register" class="btn btn-success btn-block">CREATE ACCOUNT</button>
+            </div>
+
+            {{#if status}}
+                <h5 class="text-center text-success mt-3">{{message}}</h5> 
+            {{else}}
+                <h5 class="text-center text-danger mt-3">{{message}}</h5>
+            {{/if}}
+
+            </form>
         </div>
     </div>
 </div>

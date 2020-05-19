@@ -52,6 +52,7 @@ ul{
 
 .main-nav .logo{
     width:80px;
+    margin-left: 20px;
 }
 
 .main-nav ul{
@@ -75,6 +76,25 @@ ul{
 .main-nav ul.main-menu{
     flex:1;
     margin-left: 20px;
+    margin-top: 5px;
+}
+
+.main-nav .user{
+    color: var(--darktext);
+    border: 1px solid var(--accent3);
+    padding: 5px 10px;
+    border-radius: 10px;
+}
+
+.main-nav .user:hover{
+    background: var(--accent3);
+    color: #fff;
+}
+
+.main-nav .right-menu{
+    margin-right: 40px;
+    margin-top:15px;
+    font-size: 15px;
 }
 
 
@@ -129,8 +149,16 @@ ul{
     border-radius: 4px;
 }
 
-.showcase h2, .showcase p{
+.showcase h1{
     margin-bottom: 10px;
+    font-size: 110px;
+    text-transform: uppercase;
+    font-weight: 130;
+}
+
+.showcase p{
+    margin-bottom:10px;
+    font-size: 20px;
 }
 
 .showcase .btn{
@@ -148,12 +176,8 @@ ul{
 
 .category-showcase .content{
     text-align: center;
-    padding: 100px 0;
+    padding: 100px;
     font-size: 25px;
-}
-
-.category-showcase p{
-    margin: 10px 0 20px;
 }
 
 /* Home Cards */
@@ -188,7 +212,7 @@ ul{
     height:350px;
     width: 100%;
     background: url(/images/big-container-1.jpg) no-repeat center center/cover;
-    margin-bottom: 20px;
+    margin-bottom: 40px;
     color: var(--darktext);
 }
 
@@ -234,7 +258,7 @@ ul{
     color: #616161;
     font-size:12px !important;
     padding: 35px 0;
-    margin-top: 80px;
+    margin-top: 40px;
 }
 
 .links-inner{
@@ -411,47 +435,66 @@ ul{
 .error-actions .btn { margin-right:10px; }
 
 /* Media Queries */
-@media(max-width: 700px){
+@media(max-width: 1024px){
+    .showcase h1{
+        font-size: 80px;
+    }
+
+    .single-product{
+        margin-left: 15%;
+    }
+
+    .single-product p{
+        width: 300px;
+    }
+}
+
+
+@media(max-width: 768px){
     .menu-btn{
         display: block;
     }
 
-    .main-nav ul.right-menu{
-        margin-right: 50px;
+    .menu-btn:hover{
+        opacity: 0.5
     }
 
-    .menu-btn:hover{
-        opacity: 0.5 !important;
+    .main-nav ul.right-menu{
+        margin-right: 80px;
     }
 
     .main-nav ul.main-menu{
         display: block;
-        position: absolute;
-        top:0;
+        position:absolute;
+        top: 0;
         left: 0;
         background: #f2f2f2;
         width: 50%;
-        height: 100%;
-        border-right: 1px solid #ccc;
+        height:100%;
+        border-right: #ccc 1px solid;
         opacity: 0.9;
         padding: 30px;
         transform: translateX(-500px);
-        transition: transform 0.6s ease-in-out;        
+        transition: transform 0.5s ease-in-out;
+        z-index: 2;
     }
 
     .main-nav ul.main-menu li{
-        padding: 10px;
-        border-bottom: 1px solid #ccc;
+        padding:10px;
+        border-bottom: #ccc solid 1px;
         font-size: 14px;
-    }
-
-    .main-nav ul.main-menu li:last-child{
-        border-bottom: 0;
     }
 
     .main-nav ul.main-menu.show{
         transform: translateX(-20px)
-        
+    }
+
+    .showcase{
+        height: 500px;
+    }
+
+    .showcase h1{
+        line-height: 110px;
     }
     
     .home-cards{
@@ -477,11 +520,46 @@ ul{
     .product-cards{
         grid-template-columns: repeat(2, 1fr);
     }
+
+    .single-product{
+        display:block;
+        margin-left: 20%;
+        margin-top: 0;  
+        padding: 10px;
+    }
+
+    .single-product p{
+        width: 300px;
+    }
+
+    .category-showcase{
+        height: 180px;
+    }
+
+    .category-showcase h2{
+        font-size: 30px;
+        padding: 0;
+        margin: 0;
+    }
+
+    .admin-description{
+        display:none;
+    }
 }
 
-@media(max-width:500px){
-    .main-nav .right-menu {
-        display: none;
+@media only screen and (max-width: 500px){
+
+    .showcase{
+        height: 400px;
+    }
+    
+    .showcase h1{
+        font-size: 50px;
+        line-height: 50px;
+    }
+
+    .showcase p{
+        font-size: 12px;
     }
 
     .home-cards{
@@ -493,7 +571,7 @@ ul{
     }
 
     .links .links-inner{
-        grid-template-columns: 1fr 1fr;
+        grid-template-columns: 1fr;
     }
 
     .media-payments{
@@ -504,12 +582,37 @@ ul{
         margin-bottom:20px;
     }
 
+    .links-inner .newsletter-media{
+        grid-template-columns: 1fr;
+    }
+
     .big-container-2 .content p{
         display:none;
     }
 
     .big-container-2 .content h2{
         margin-bottom:20px;
+    }
+
+    .single-product{
+        display:block;
+        margin: 0;
+        padding: 10px;
+    }
+
+    .single-product p{
+        width: 300px;
+    }
+
+    .form-group{
+        width: 200px !important;
+        margin-left: 5px;
+        margin-top: 10px;
+        display: block;
+    }
+
+    .form-header h1{
+        font-size: 30px !important;
     }
 
 }

@@ -136,6 +136,7 @@ router.post('/new', upload.array('img',1), async (req, res, next)=>{
             id_category: req.body.category
         }
     let product = await adminModel.addProduct(obj1, obj2);
+    console.log (obj2)
     res.redirect('/admin');
     }catch(error){
         res.render('errorpage');
